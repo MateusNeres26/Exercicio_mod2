@@ -12,17 +12,6 @@ Funcionalidade: Tela de login
   E a senha "senha@123"
   Então devo ser direcionado para a tela de checkout
 
-Cenário: Usuário inexistente
-  Quando eu digitar o usuário "xxxyyyzzz@ebac.com.br"
-  E a senha "senha@123"
-  Então deve exibir uma mensagem de alerta: "Usuário ou senha inválidos"
-
-
-Cenário: Usuário com senha inválida
-  Quando eu digitar o usuário "joao@ebac.com.br"
-  E a senha "huehueheu"
-  Então deve exibir uma mensagem de alerta: "Usuário ou senha inválidos"
-
   Esquema do Cenário: Autenticar multiplos usuários
     Quando eu digitar o <usuario>
     E a <senha>
@@ -30,7 +19,7 @@ Cenário: Usuário com senha inválida
 
     Exemplos:
       | usuario             | senha        | mensagem                     |
-      | "joao@ebac.com.br"  | "teste@123e" | "Usuário ou senha inválidos" |
+      | "xxxyyyzzz@ebac.com.br"  | "test@123e" | "Usuário ou senha inválidos" |
       | "maria@ebac.com.br" | "teste@123d" | "Usuário ou senha inválidos" |
       | "joao@ebac.com.br"  | "teste@123d" | "Usuário ou senha inválidos" |
 

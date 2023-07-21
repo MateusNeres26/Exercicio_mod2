@@ -20,11 +20,6 @@ Funcionalidade: Configurar Produto
       | Orange | M       | 3          |
       |        | L       | 4          |
       |        | XL      | 5          |
-      |        |         | 6          |
-      |        |         | 7          |
-      |        |         | 8          |
-      |        |         | 9          |
-      |        |         | 10         |
 
 
   Cenario: Deve permitir 10 produtos por venda

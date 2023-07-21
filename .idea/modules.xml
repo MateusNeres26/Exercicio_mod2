@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/EBAC - Gherkin.iml" filepath="$PROJECT_DIR$/.idea/EBAC - Gherkin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/exercicios-ebac.iml" filepath="$PROJECT_DIR$/.idea/exercicios-ebac.iml" />
     </modules>
   </component>
 </project>
