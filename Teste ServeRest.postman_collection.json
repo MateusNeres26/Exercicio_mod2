@@ -1,0 +1,354 @@
+{
+	"info": {
+		"_postman_id": "f27e1799-6aa9-4d68-9bde-2401e9607390",
+		"name": "Teste ServeRest",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28141501",
+		"_collection_link": "https://speeding-moon-119951.postman.co/workspace/Estudos-EBAC~2838424f-fd97-439a-ad54-d5346010eb8b/collection/28141501-f27e1799-6aa9-4d68-9bde-2401e9607390?action=share&creator=28141501&source=collection_link"
+	},
+	"item": [
+		{
+			"name": "Usuários",
+			"item": [
+				{
+					"name": "Criar usuário - Valida email cadastrado",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"    pm.test(\"Valida retorno de mensagem\", function () {\r",
+									"        pm.expect(pm.response.text()).to.include(\"Este email já está sendo usado\");\r",
+									"    });\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nome\": \"Mateus Neres\",\r\n  \"email\": \"mateus@qa.com.br\",\r\n  \"password\": \"teste\",\r\n  \"administrador\": \"true\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{prod}}usuarios/",
+							"host": [
+								"{{prod}}usuarios"
+							],
+							"path": [
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Criar usuário - Cadastro com sucesso",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"    pm.test(\"Valida retorno de mensagem\", function () {\r",
+									"        pm.expect(pm.response.text()).to.include(\"Cadastro realizado com sucesso\");\r",
+									"    });\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nome\": \"Mateus Neres\",\r\n  \"email\": \"mateus@qa.com.br\",\r\n  \"password\": \"teste\",\r\n  \"administrador\": \"true\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{prod}}usuarios/",
+							"host": [
+								"{{prod}}usuarios"
+							],
+							"path": [
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar usuarios",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"    pm.test(\"Valida email de usuario\", function () {\r",
+									"        pm.expect(pm.response.text()).to.include(\"mateus@qa.com.br\");\r",
+									"    });\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nome\": \"Mateus Neres\",\r\n  \"email\": \"mateus@qa.com.br\",\r\n  \"password\": \"teste\",\r\n  \"administrador\": \"true\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{prod}}usuarios/",
+							"host": [
+								"{{prod}}usuarios"
+							],
+							"path": [
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar usuarios por ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"    pm.test(\"Valida nome de usuário\", function () {\r",
+									"        pm.expect(pm.response.text()).to.include(\"Mateus Neres\");\r",
+									"    });\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nome\": \"Mateus Neres\",\r\n  \"email\": \"mateus@qa.com.br\",\r\n  \"password\": \"teste\",\r\n  \"administrador\": \"true\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{prod}}usuarios/shIpIBT8aG7Iw3fN",
+							"host": [
+								"{{prod}}usuarios"
+							],
+							"path": [
+								"shIpIBT8aG7Iw3fN"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar usuarios por ID - Cenário Inválido",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"    pm.test(\"Valida nome de usuário\", function () {\r",
+									"        pm.expect(pm.response.text()).to.include(\"Usuário não encontrado\");\r",
+									"    });\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nome\": \"Mateus Neres\",\r\n  \"email\": \"mateus@qa.com.br\",\r\n  \"password\": \"teste\",\r\n  \"administrador\": \"true\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{prod}}usuarios/shIpIBT8aG7Iw3f",
+							"host": [
+								"{{prod}}usuarios"
+							],
+							"path": [
+								"shIpIBT8aG7Iw3f"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Editar usuarios por ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"    pm.test(\"Valida alteração com sucesso\", function () {\r",
+									"        pm.expect(pm.response.text()).to.include(\"Registro alterado com sucesso\");\r",
+									"    });\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nome\": \"Mateus Neres editado\",\r\n  \"email\": \"mateus@qa.com.br\",\r\n  \"password\": \"teste\",\r\n  \"administrador\": \"true\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{prod}}usuarios/shIpIBT8aG7Iw3fN",
+							"host": [
+								"{{prod}}usuarios"
+							],
+							"path": [
+								"shIpIBT8aG7Iw3fN"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Excluir usuarios por ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"    pm.test(\"Valida exclusão sem sucesso\", function () {\r",
+									"        pm.expect(pm.response.text()).to.include(\"Registro excluído com sucesso\");\r",
+									"    });\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nome\": \"Mateus Neres editado\",\r\n  \"email\": \"mateus@qa.com.br\",\r\n  \"password\": \"teste\",\r\n  \"administrador\": \"true\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{prod}}usuarios/nFgolMQqm03hqzpv",
+							"host": [
+								"{{prod}}usuarios"
+							],
+							"path": [
+								"nFgolMQqm03hqzpv"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const resposta = pm.response.json();\r",
+							"pm.globals.set(\"token\", resposta.authorization);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"mateus@qa.com.br\",\r\n  \"password\": \"teste\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{prod}}login",
+					"host": [
+						"{{prod}}login"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
