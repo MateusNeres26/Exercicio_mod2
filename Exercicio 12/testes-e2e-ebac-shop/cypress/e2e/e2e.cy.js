@@ -1,4 +1,6 @@
-import enderecoPage from "../../cypress/support/page_objects/endereco.page";
+import enderecoPage from "../../cypress/support/page_objects/Endereco.page";
+import metodoPagamentoPage from "../../cypress/support/page_objects/MetodoPagamento.page";
+
 const dadosEndereco = require("../../cypress/fixtures/endereco.json");
 
 context("Exercicio - Testes End-to-end - Fluxo de pedido", () => {
@@ -15,7 +17,7 @@ context("Exercicio - Testes End-to-end - Fluxo de pedido", () => {
   });
 
   it("Deve fazer um pedido na loja Ebac Shop de ponta a ponta", () => {
-    enderecoPage.compraProduto();
+    cy.adicionarProduto("Abominable Hoodie", 4)
     enderecoPage.enderecoFaturamento(
       dadosEndereco[2].nome,
       dadosEndereco[2].sobrenome,
@@ -29,7 +31,7 @@ context("Exercicio - Testes End-to-end - Fluxo de pedido", () => {
       dadosEndereco[2].telefone,
       dadosEndereco[2].email
     );
-    enderecoPage.metodoPagamento();
+    metodoPagamentoPage.metodoPagamento();
     cy.get(".woocommerce-notice").should(
       "contain",
       "Obrigado. Seu pedido foi recebido."

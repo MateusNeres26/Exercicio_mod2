@@ -27,6 +27,27 @@
 
 Cypress.Commands.add('login', (usuario, senha) => {
     cy.get('#username').type(usuario)
-    cy.get('#password').type(senha, {log: false})
+    cy.get('#password').type(senha, { log: false })
     cy.get('.woocommerce-form > .button').click()
+});
+
+Cypress.Commands.add('adicionarProduto', (nomeProduto, quantidade) => {
+
+    cy.get('[class="product-block grid"]')
+        .contains(nomeProduto)
+        .click();
+    cy.get(".button-variable-item-M").click();
+    cy.get(".button-variable-item-Green").click();
+    cy.get(".input-text").clear().type(quantidade);
+    cy.get(".single_add_to_cart_button").click();
+    cy.get(".dropdown-toggle > .mini-cart-items").should("contain", quantidade);
+    cy.get(".woocommerce-message").should(
+        "contain",
+        quantidade + " × “Abominable Hoodie” foram adicionados no seu carrinho."
+    );
+    cy.get(".woocommerce-message > .button").click();
+    cy.wait(5);
+    cy.get(".checkout-button").click({ force: true });
+
+
 });
