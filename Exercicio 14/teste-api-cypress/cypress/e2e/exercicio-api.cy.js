@@ -39,14 +39,46 @@ describe('Testes da Funcionalidade Usuários', () => {
     });
 
     it('Deve editar um usuário previamente cadastrado', () => {
-        let email = `qaEDITADO${Math.floor(Math.random() * 1000) + "@gmail.com"}`
-        cy.editarUsuario("Matthew Donovan EDITADO", email, "Teste@123", "true")
+        let email = `qa${Math.floor(Math.random() * 10000) + "@gmail.com"}`
+        cy.cadastrarUsuario("Matthew Donovan Novo", email,
+            "Teste@123", "true")
             .then((response) => {
-                expect(response.body.message).to.equal("Registro alterado com sucesso");
+                let id = response.body._id;
+
+                cy.request({
+                    method: 'PUT',
+                    url: `usuarios/${id}`,
+                    body:
+                    {
+                        "nome": "Matthew Donovan Novo",
+                        "email": email,
+                        "password": "Teste@123",
+                        "administrador": "true"
+                    },
+                    failOnStatusCode: false
+                }).then((response) => {
+                    expect(response.body.message).to.equal("Registro alterado com sucesso");
+                });
+
             });
     });
 
     it('Deve deletar um usuário previamente cadastrado', () => {
-        cy.deletarUsuario();
+        let email1 = `qa${Math.floor(Math.random() * 10000) + "@gmail.com"}`
+        cy.cadastrarUsuario("Matthew Delete", email1,
+            "Teste@123", "true")
+            .then((response) => {
+                let id = response.body._id;
+
+                cy.request({
+                    method: 'DELETE',
+                    url: `usuarios/${id}`,
+
+
+                }).then((response) => {
+                    expect(response.body.message).to.equal("Registro excluído com sucesso");
+                });
+
+            });
     });
 });

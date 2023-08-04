@@ -81,48 +81,4 @@ Cypress.Commands.add('cadastrarUsuario', (nome, email, senha, administrador) => 
     });
 });
 
-Cypress.Commands.add('editarUsuario', (nome, email, senha, administrador) => {
-    let email1 = `qa${Math.floor(Math.random() * 10000) + "@gmail.com"}`
-    cy.cadastrarUsuario("Matthew Donovan Novo", email1,
-        "Teste@123", "true")
-        .then((response) => {
-            let id = response.body._id;
-
-            cy.request({
-                method: 'PUT',
-                url: `usuarios/${id}`,
-                body:
-                {
-                    "nome": nome,
-                    "email": email,
-                    "password": senha,
-                    "administrador": administrador
-                },
-                failOnStatusCode: false
-            }).then((response) => {
-                expect(response.body.message).to.equal("Registro alterado com sucesso");
-            });
-
-        });
-});
-
-Cypress.Commands.add('deletarUsuario', () => {
-    let email1 = `qa${Math.floor(Math.random() * 10000) + "@gmail.com"}`
-    cy.cadastrarUsuario("Matthew Delete", email1,
-        "Teste@123", "true")
-        .then((response) => {
-            let id = response.body._id;
-
-            cy.request({
-                method: 'DELETE',
-                url: `usuarios/${id}`,
-
-
-            }).then((response) => {
-                expect(response.body.message).to.equal("Registro excluído com sucesso");
-            });
-
-        });
-});
-
 
