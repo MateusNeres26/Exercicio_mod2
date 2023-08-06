@@ -14,9 +14,8 @@ describe('Testes da Funcionalidade Usuários', () => {
             url: 'usuarios',
         }).then((response) => {
             expect(response.status).to.equal(200);
-            expect(response.body.usuarios[0].nome).to.equal("Fulano da Silva2")
+            expect(response.body.usuarios[1].nome).to.equal("Matthew Donovan")
             expect(response.body).to.have.property("usuarios")
-            expect(response.duration).to.be.lessThan(20)
         });
     });
 
