@@ -1,0 +1,35 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Clonar repositório') {
+            steps {
+                git branch: 'main', url: 'https://github.com/MateusNeres26/exercicios-ebac.git'
+            }
+        }
+
+        stage('Instalar dependências') {
+            steps {
+                dir('Exercicio 14/teste-api-cypress') {
+                    bat 'npm install'
+                }
+            }
+        }
+
+        stage('Executar testes') {
+            steps {
+                dir('Exercicio 12/testes-e2e-ebac-shop') {
+                    sh 'npm run cy:run'
+                }
+            }
+        }
+
+        stage('Gerar relatório') {
+            steps {
+                dir('Exercicio 12/testes-e2e-ebac-shop') {
+                    sh 'npm run cy:report'
+                }
+            }
+        }
+    }
+}
