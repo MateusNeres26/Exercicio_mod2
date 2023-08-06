@@ -11,13 +11,13 @@ pipeline {
         stage('Instalar dependências e Executar testes') {
             steps {
                 // Navega para o diretório correto no Windows
-                bat 'cd "Exercicio 12\\testes-e2e-ebac-shop"'
+                dir('Exercicio 12/testes-e2e-ebac-shop') {
+                    // Instala as dependências
+                    bat 'npm install'
 
-                // Instala as dependências
-                bat 'npm install'
-
-                // Executa os testes
-                bat 'npx cypress run'
+                    // Executa os testes
+                    bat 'npm cypress run'
+                }
             }
         }
     }
