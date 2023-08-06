@@ -16,6 +16,14 @@ pipeline {
             }
         }
 
+        stage('Executar servidor API') {
+            steps {
+                dir('Exercicio 14/teste-api-cypress') {
+                    bat 'npm run start'
+                }
+            }
+        }
+
         stage('Executar testes') {
             steps {
                 dir('Exercicio 14/teste-api-cypress') {
