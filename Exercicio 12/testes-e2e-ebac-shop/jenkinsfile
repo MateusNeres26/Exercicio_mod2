@@ -4,19 +4,20 @@ pipeline {
     stages {
         stage('Clonar repositório') {
             steps {
-                git branch: 'main', url: 'https://github.com/MateusNeres26/exercicios-ebac.git', dir: 'Exercicio 12/testes-e2e-ebac-shop'
+                git branch: 'main', url: 'https://github.com/MateusNeres26/exercicios-ebac.git'
             }
         }
 
-        stage('Instalar dependências') {
+        stage('Instalar dependências e Executar testes') {
             steps {
-                sh 'npm install'
-            }
-        }
+                // Navega para o diretório correto no Windows
+                bat 'cd Exercicio 12\\testes-e2e-ebac-shop'
 
-        stage('Executar testes') {
-            steps {
-                sh 'npx cypress run'
+                // Instala as dependências
+                bat 'npm install'
+
+                // Executa os testes
+                bat 'npx cypress run'
             }
         }
     }
