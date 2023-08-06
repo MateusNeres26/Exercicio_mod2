@@ -11,7 +11,7 @@ pipeline {
         stage('Instalar dependências e Executar testes') {
             steps {
                 // Navega para o diretório correto no Windows
-                bat 'cd Exercicio 12\\testes-e2e-ebac-shop'
+                bat cd '.\Exercicio 14\teste-api-cypress\'
 
                 // Instala as dependências
                 bat 'npm install'
