@@ -23,13 +23,5 @@ pipeline {
                 }
             }
         }
-
-        stage('Gerar relatorio') {
-            steps {
-                dir('Exercicio 14/teste-api-cypress') {
-                   bat 'npm run cy:report'
-                }
-            }
-        }
     }
 }
