@@ -16,7 +16,7 @@ pipeline {
                     bat 'npm install'
 
                     // Executa os testes
-                    bat 'npm cypress run'
+                    bat 'npx cypress run'
                 }
             }
         }
