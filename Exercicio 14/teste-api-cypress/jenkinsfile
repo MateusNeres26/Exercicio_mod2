@@ -18,7 +18,7 @@ pipeline {
 
         stage('Executar testes') {
             steps {
-                dir('Exercicio 12/testes-e2e-ebac-shop') {
+                dir('Exercicio 14/teste-api-cypress') {
                     sh 'npm run cy:run'
                 }
             }
@@ -26,7 +26,7 @@ pipeline {
 
         stage('Gerar relatório') {
             steps {
-                dir('Exercicio 12/testes-e2e-ebac-shop') {
+                dir('Exercicio 14/teste-api-cypress') {
                     sh 'npm run cy:report'
                 }
             }
